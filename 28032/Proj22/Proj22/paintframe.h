@@ -1,5 +1,6 @@
 #pragma once
-#include "frame.h"
+#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28032\Proj22\Project1\frame.h"
+#include "shape.h"
 
 class PaintFrame : public Frame{
 public:
@@ -14,4 +15,5 @@ public:
 	void setGrid(bool c);
 
 	bool toGrid;
+	int num = 0;
 };

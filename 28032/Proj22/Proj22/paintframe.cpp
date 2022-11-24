@@ -1,7 +1,7 @@
 #include <iostream>
 #include "paintframe.h"
+#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28032\Proj22\Project1\frame.h"
 
-static int num = 0;
 static Shape* unknown[100];
 
 PaintFrame::PaintFrame() : Frame(L"", 800, 600){
@@ -33,7 +33,7 @@ bool PaintFrame::eventHandler(MEvent e)
 
 		}
 		else if (figType_ == 1) {
-			if (toGrid) {
+			if (cmdType_ == 0) {
 				unknown[num] = new Rect(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 			}
 			else {
@@ -41,7 +41,7 @@ bool PaintFrame::eventHandler(MEvent e)
 			}
 		}
 		else if (figType_ == 2) {
-			if (toGrid) {
+			if (cmdType_ == 0) {
 				unknown[num] = new Elli(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 			}
 			else {
@@ -49,7 +49,7 @@ bool PaintFrame::eventHandler(MEvent e)
 			}
 		}
 		else if (figType_ == 3) {
-			if (toGrid) {
+			if (cmdType_ == 0) {
 				unknown[num] = new Line(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 			}
 			else {
@@ -63,6 +63,7 @@ bool PaintFrame::eventHandler(MEvent e)
 	}
 	return true;
 }
+
 void PaintFrame::repaint() {
 	drawButtons();
 }
@@ -105,8 +106,4 @@ void PaintFrame::setShape(int t) {
 
 void PaintFrame::setCommand(int t) {
 	cmdType_ = t;
-}
-
-void PaintFrame::setGrid(bool c) {
-	toGrid = c;
 }

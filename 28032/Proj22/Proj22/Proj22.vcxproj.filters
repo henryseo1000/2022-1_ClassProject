@@ -15,19 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="frame.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Misc.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="shape.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="component.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="paintframe.cpp">
@@ -35,22 +26,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frame.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Misc.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="shape.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="component.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="paintframe.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="List.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
