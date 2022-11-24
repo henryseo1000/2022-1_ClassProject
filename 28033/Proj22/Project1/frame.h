@@ -4,7 +4,7 @@
 #include <list>
 #include "Misc.h"
 #include "component.h"
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\List.h"
+#include "List.h"
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 

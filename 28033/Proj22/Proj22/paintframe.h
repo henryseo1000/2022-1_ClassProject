@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\frame.h"
+#include "frame.h"
 #include "shape.h"
 
 class PaintFrame : public Frame{

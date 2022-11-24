@@ -1,13 +1,10 @@
 #include <iostream>
 #include <Windows.h>
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Proj22\paintframe.h"
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Proj22\shape.h"
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\List.h"
+#include "List.h"
+#include "frame.h"
 
 // 전역함수로는 윈도 메시지 처리 함수가 있다.
-PaintFrame* theFrame = nullptr;
-static Shape* unknown[100];
-
+extern Frame* theFrame = nullptr;
 LRESULT CALLBACK WndProc(HWND Hw, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 

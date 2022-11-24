@@ -4,7 +4,7 @@
 #include "paintframe.h"
 
 // 일단은 전역 변수 1개는 사용한다.
-extern PaintFrame* theFrame;
+extern Frame* theFrame;
 
 int main() {
 	try {

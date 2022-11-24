@@ -1,7 +1,7 @@
 #include <iostream>
 #include "paintframe.h"
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\List.h"
-#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\frame.h"
+#include "List.h"
+#include "frame.h"
 
 static MyList<Shape*> unknown;
 
