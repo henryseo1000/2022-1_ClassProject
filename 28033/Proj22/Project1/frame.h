@@ -4,6 +4,7 @@
 #include <list>
 #include "Misc.h"
 #include "component.h"
+#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\List.h"
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -16,7 +17,7 @@ protected:
 	HDC hDC_;    // 이 변수가 있어야 그림을 그릴 수 있다.
 
 	// 공통적인 변수
-	Component* buttons_[100];
+	MyList<Component*> buttons_;
 	int numButtons = 0;
 
 	//
@@ -50,4 +51,6 @@ public:
 	int figType_ = FIG_NONE;
 	int cmdType_ = 0;
 	int num = 0;
+
+	MyList<Component*>::iterator i;
 };

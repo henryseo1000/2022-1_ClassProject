@@ -1,8 +1,11 @@
 #include <iostream>
 #include "paintframe.h"
+#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\List.h"
 #include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\frame.h"
 
-static Shape* unknown[100];
+static MyList<Shape*> unknown;
+
+MyList<Shape*>::iterator j;
 
 PaintFrame::PaintFrame() : Frame(L"", 800, 600){
 
@@ -34,26 +37,32 @@ bool PaintFrame::eventHandler(MEvent e)
 		}
 		else if (figType_ == 1) {
 			if (cmdType_ == 0) {
-				unknown[num] = new Rect(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
+				Shape* R = new Rect(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
+				unknown.push_back(R);
 			}
 			else {
-				unknown[num] = new Rect(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
+				Shape* R = new Rect(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
+				unknown.push_back(R);
 			}
 		}
 		else if (figType_ == 2) {
 			if (cmdType_ == 0) {
-				unknown[num] = new Elli(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
+				Shape* R = new Elli(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
+				unknown.push_back(R);
 			}
 			else {
-				unknown[num] = new Elli(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
+				Shape* R = new Elli(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
+				unknown.push_back(R);
 			}
 		}
 		else if (figType_ == 3) {
 			if (cmdType_ == 0) {
-				unknown[num] = new Line(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
+				Shape* R = new Line(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
+				unknown.push_back(R);
 			}
 			else {
-				unknown[num] = new Line(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
+				Shape* R = new Line(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
+				unknown.push_back(R);
 			}
 		}
 		num++;
@@ -90,20 +99,18 @@ void PaintFrame::initialize() {
 }
 
 void PaintFrame::drawButtons() {
-	for (int i = 0; i < numButtons; i++) {
-		buttons_[i]->draw(hDC_, 0 + i * buttons_[i]->default_width, 0);
-	}
-	for (int i = 0; i < num; i++) {
-		if (unknown[i] != nullptr) {
-			unknown[i]->draw();
+	Frame::drawButtons();
+	for (j = unknown.begin(); j.hasNext(); j.toNext()) {
+		if (j.getContent() != nullptr) {
+			j.getContent()->draw();
 		}
 	}
 }
 
-void PaintFrame::setShape(int t) {
-	figType_ = t;
-}
-
 void PaintFrame::setCommand(int t) {
 	cmdType_ = t;
+}
+
+void PaintFrame::setGrid(bool c) {
+	toGrid = c;
 }

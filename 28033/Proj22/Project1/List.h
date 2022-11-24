@@ -1,4 +1,9 @@
 #pragma once
+#include <iostream>
+using namespace std;
+
+class iterator;
+class MyLink;
 template <class T>
 class MyList {
 public:
@@ -47,20 +52,38 @@ public:
 		T data;
 		MyLink* next;
 		MyLink* prev;
-
-	private:
 		MyLink() :next(0) {
 
 		}
 	};
 
 	class iterator {
+	public:
+		iterator() {
 
+		}
+		iterator(MyLink* p) {
+			ptr_ = p;
+		}
+		bool hasNext() {
+			return ptr_ != nullptr;
+		}
+		void toNext() {
+			ptr_ = ptr_->next;
+		}
+		T getContent() {
+			return ptr_->data;
+		}
+		MyLink* ptr_;
 	};
 
 	class reverse_iterator {
 
 	};
+	iterator begin() {
+		return iterator(root);
+	}
+
 private:
 	MyLink* root = 0;
 };

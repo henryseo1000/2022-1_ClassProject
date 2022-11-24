@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Proj22\paintframe.h"
 #include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Proj22\shape.h"
+#include "C:\Users\henry\OneDrive - 명지대학교\바탕 화면\28033\Proj22\Project1\List.h"
 
 // 전역함수로는 윈도 메시지 처리 함수가 있다.
 PaintFrame* theFrame = nullptr;
@@ -129,19 +130,21 @@ void Frame::initialize() {
 }
 
 void Frame::addButton(Component* b) {
-	buttons_[numButtons++] = b;
+	buttons_.push_back(b);
 }
  
 void Frame::drawButtons() {
-	for (int i = 0; i < numButtons; i++) {
-		buttons_[i]->draw(hDC_, 0 + i * buttons_[i]->default_width, 0);
+	int n = 0;
+	for (i = buttons_.begin(); i.hasNext(); i.toNext()) {
+		i.getContent()->draw(hDC_, 0 + n * i.getContent()->default_width, 0);
+		n++;
 	}
 }
 
 Component* Frame::findButton(MPoint m) {
-	for (int i = 0; i < numButtons; i++) {
-		if (buttons_[i]->includes(m)) {
-			return buttons_[i];
+	for (i = buttons_.begin(); i.hasNext(); i.toNext()) {
+		if (i.getContent()->includes(m)) {
+			return i.getContent();
 		}
 	}
 	return nullptr;

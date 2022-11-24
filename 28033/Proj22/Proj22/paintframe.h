@@ -10,7 +10,6 @@ public:
 	void repaint() override;
 	void initialize() override;
 	void drawButtons();
-	void setShape(int t) override;
 	void setCommand(int t);
 	void setGrid(bool c);
 
