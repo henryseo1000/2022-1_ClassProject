@@ -23,7 +23,8 @@ bool PaintFrame::eventHandler(MEvent e)
 		OutputDebugString(L"Down\n");
 		return true;
 	}
-	else if(!Frame::eventHandler(e)) {
+
+	else if (!Frame::eventHandler(e) && e.isLButtonUpEvent()) {
 		end_ = e.getPoint();
 		if (findButton(end_) != nullptr) {
 			findButton(end_)->onClick(e);
@@ -32,7 +33,7 @@ bool PaintFrame::eventHandler(MEvent e)
 
 		}
 		else if (figType_ == 1) {
-			if (cmdType_ == 0) {
+			if (toGrid) {
 				unknown[num] = new Rect(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 			}
 			else {
@@ -40,7 +41,7 @@ bool PaintFrame::eventHandler(MEvent e)
 			}
 		}
 		else if (figType_ == 2) {
-			if (cmdType_ == 0) {
+			if (toGrid) {
 				unknown[num] = new Elli(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 			}
 			else {
@@ -48,7 +49,7 @@ bool PaintFrame::eventHandler(MEvent e)
 			}
 		}
 		else if (figType_ == 3) {
-			if (cmdType_ == 0) {
+			if (toGrid) {
 				unknown[num] = new Line(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 			}
 			else {
@@ -58,8 +59,9 @@ bool PaintFrame::eventHandler(MEvent e)
 		num++;
 		//Rectangle(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 		OutputDebugString(L"Up\n");
-		return false;
+		return true;
 	}
+	return true;
 }
 void PaintFrame::repaint() {
 	drawButtons();
@@ -103,4 +105,8 @@ void PaintFrame::setShape(int t) {
 
 void PaintFrame::setCommand(int t) {
 	cmdType_ = t;
+}
+
+void PaintFrame::setGrid(bool c) {
+	toGrid = c;
 }

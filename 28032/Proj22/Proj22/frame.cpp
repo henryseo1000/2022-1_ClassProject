@@ -115,6 +115,7 @@ bool Frame::eventHandler(MEvent e)
 
 void Frame::repaint() {
 	// 그려야할 모든 것은 여기에. 아래 두 줄은 샘플이니 지워야한다.
+	drawButtons();
 }
 
 void Frame::invalidate() {
@@ -145,4 +146,8 @@ Component* Frame::findButton(MPoint m) {
 
 void Frame::setShape(int t) {
 	figType_ = t;
+}
+
+HDC Frame::getDC() {
+	return hDC_;
 }

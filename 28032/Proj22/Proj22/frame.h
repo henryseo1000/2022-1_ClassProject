@@ -49,6 +49,7 @@ public:
 	virtual void drawButtons();
 	Component* findButton(MPoint p); // p 위치를 클릭했을 때 거기 버튼의 포인터를 돌려준다.
 	virtual void setShape(int t);
+	HDC getDC();
 
 	int figType_ = FIG_NONE;
 	int cmdType_ = 0;

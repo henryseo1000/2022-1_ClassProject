@@ -44,28 +44,11 @@ void Component::draw(HDC hdc, int x, int y) {
 	x_ = x;
 	y_ = y;
 	Rectangle(hdc, x, y, x + default_width, y + default_height);
-	RECT re = { x, y, x + default_width, y + default_height };
-
-	int len;
-	int slength = (int)name_.length() + 1;
-	len = MultiByteToWideChar(CP_ACP, 0, name_.c_str(), slength, 0, 0);
-	wchar_t* buf = new wchar_t[len];
-	MultiByteToWideChar(CP_ACP, 0, name_.c_str(), slength, buf, len);
-	std::wstring r(buf);
-	delete[] buf;
-	LPCWSTR result = r.c_str();
-
-	DrawText(hdc, result, -1, &re, DT_VCENTER | DT_CENTER);
+	//TextOutA(hdc, x + 5, y + 8, name_.c_str(), strlen(name_.c_str()));
 }
 
 void Component::onClick(MEvent e) {
-	if (includes(e.getPoint())) {
-		f_->setShape(Command_);
-	}
-}
-
-void Component::setCommand(int a) {
-	Command_ = a;
+	//
 }
 
 void Component::setFrame(Frame* f) {
@@ -86,21 +69,8 @@ MButton::MButton(string s) : Component(s) {
 
 
 void MButton::draw(HDC hdc, int x, int y) {
-	x_ = x;
-	y_ = y;
-	Rectangle(hdc, x, y, x + default_width, y + default_height);
-	RECT re = { x, y, x + default_width, y + default_height };
-
-	int len;
-	int slength = (int)name_.length() + 1;
-	len = MultiByteToWideChar(CP_ACP, 0, name_.c_str(), slength, 0, 0);
-	wchar_t* buf = new wchar_t[len];
-	MultiByteToWideChar(CP_ACP, 0, name_.c_str(), slength, buf, len);
-	std::wstring r(buf);
-	delete[] buf;
-	LPCWSTR result = r.c_str();
-
-	DrawText(hdc, result, -1, &re, DT_VCENTER | DT_CENTER);
+	Component::draw(hdc, x, y);
+	TextOutA(hdc, x + 5, y + 8, name_.c_str(), strlen(name_.c_str()));
 }
 
 void MButton::onClick(MEvent e) {
@@ -125,41 +95,20 @@ checkbox::checkbox(string s) : Component(s) {
 }*/
 
 void checkbox::draw(HDC hdc, int x, int y) {
-	x_ = x;
-	y_ = y;
-	Rectangle(hdc, x, y, x + default_width, y + default_height);
-	RECT re = { x, y, x + default_width, y + default_height };
-
 	string R;
-	if (f_->cmdType_ == 0) {
+	Component::draw(hdc, x, y);
+
+	if (checked_) {
 		R = "[ ]" + name_;
 	}
 	else {
 		R = "[v]" + name_;
 	}
-
-	int len;
-	int slength = (int)R.length() + 1;
-	len = MultiByteToWideChar(CP_ACP, 0, R.c_str(), slength, 0, 0);
-	wchar_t* buf = new wchar_t[len];
-	MultiByteToWideChar(CP_ACP, 0, R.c_str(), slength, buf, len);
-	std::wstring r(buf);
-	delete[] buf;
-	LPCWSTR result = r.c_str();
-
-	DrawText(hdc, result, -1, &re, DT_VCENTER | DT_CENTER);
+	TextOutA(hdc, x + 5, y + 8, R.c_str(), strlen(R.c_str()));
 }
 
 void checkbox::onClick(MEvent e) {
-		if (f_->cmdType_ == 1) {
-			f_->cmdType_ = 0;
-		}
-		else {
-			f_->cmdType_ = 1;
-		}
-	
-}
-
-void checkbox::setCommand(int a) {
-	Command_ = a;
+	checked_ = !checked_;
+	draw(f_->getDC(), x_, y_);
+	((PaintFrame*)f_)->setGrid(checked_);
 }

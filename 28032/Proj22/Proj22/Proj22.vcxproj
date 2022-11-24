@@ -137,7 +137,6 @@
   <ItemGroup>
     <ClInclude Include="component.h" />
     <ClInclude Include="frame.h" />
-    <ClInclude Include="List.h" />
     <ClInclude Include="paintframe.h" />
     <ClInclude Include="Misc.h" />
     <ClInclude Include="shape.h" />
