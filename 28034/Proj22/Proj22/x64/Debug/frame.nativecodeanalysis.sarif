@@ -1,0 +1,51 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.34.31933.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///d:/onedrive - 명지대학교/1.cho/2.강의/2022년2학기/project/proj22/proj22/frame.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "bc28c548a98e503a34a65fdc26c9f1399746b2c9362c511569bf4fc74d997a0b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/onedrive - 명지대학교/1.cho/2.강의/2022년2학기/project/proj22/proj22/frame.h"
+          },
+          "hashes": {
+            "sha-256": "b5baafd9c3bb4e598b9182130ed1bd4e18a706f8bd45f04bbda3fdef721883c6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/onedrive - 명지대학교/1.cho/2.강의/2022년2학기/project/proj22/proj22/misc.h"
+          },
+          "hashes": {
+            "sha-256": "ccf241b31ece3c1239e8a73bdcc8d785706ffec38865c1ccb762b52da8134e83"
+          }
+        }
+      ]
+    }
+  ]
+}
