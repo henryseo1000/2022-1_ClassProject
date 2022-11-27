@@ -15,6 +15,7 @@ public:
 	void setGroup(MPoint s, MPoint e);
 	void findShape(Group * g);
 	Shape* findShape(MPoint m);
+	void moveShape(Shape* sh, MPoint s, MPoint e);
 
 	bool toGrid = true;
 	int num = 0;

@@ -30,6 +30,7 @@ public:
 	string name_;
 	Frame* f_ = nullptr;
 	int Command_ = 0;
+	//int numClick = 0;
 };
 
 class MButton : public Component {

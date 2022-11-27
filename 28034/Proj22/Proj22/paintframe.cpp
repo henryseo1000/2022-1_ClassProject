@@ -31,10 +31,16 @@ bool PaintFrame::eventHandler(MEvent e)
 		Shape* s;
 		end_ = e.getPoint();
 		if ((s = findShape(start_)) != nullptr) {
-			s->x1_ = s->x1_ + (end_.x_ - start_.x_);
-			s->y1_ = s->y1_ + (end_.y_ - start_.y_);
-			s->x2_ = s->x2_ + (end_.x_ - start_.x_);
-			s->y2_ = s->y2_ + (end_.y_ - start_.y_);
+			if (s->group_ != nullptr) {
+				for (j = (s->group_->slist_).begin(); j.hasNext(); j.toNext()) {
+					if (j.getContent() != nullptr) {
+						moveShape(j.getContent(), start_, end_);
+					}
+				}
+			}
+			else {
+				moveShape(s, start_, end_);
+			}
 		}
 		invalidate();
 		return true;
@@ -57,6 +63,7 @@ bool PaintFrame::eventHandler(MEvent e)
 				Shape* R = new Rect(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
 				unknown.push_back(R);
 			}
+			num++;
 		}
 		else if (figType_ == 2) {
 			if (cmdType_ == 0) {
@@ -67,6 +74,7 @@ bool PaintFrame::eventHandler(MEvent e)
 				Shape* R = new Elli(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
 				unknown.push_back(R);
 			}
+			num++;
 		}
 		else if (figType_ == 3) {
 			if (cmdType_ == 0) {
@@ -77,17 +85,22 @@ bool PaintFrame::eventHandler(MEvent e)
 				Shape* R = new Line(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
 				unknown.push_back(R);
 			}
+			num++;
 		}
 		else if (figType_ == 4) {
-			Group * g = new Group(start_, end_);
-			findShape(g);
-			g_.push_back(g);
-			figType_ = FIG_NONE;
+			if (gnum <= 1) {
+				Group* g = new Group(start_, end_);
+				g_.push_back(g);
+				findShape(g);
+				gnum++;
+			}
+			else {
+				gnum = 0;
+				figType_ = 0;
+			}
 		}
-		num++;
 		//Rectangle(hDC_, start_.x_, start_.y_, end_.x_, end_.y_);
 		OutputDebugString(L"Up\n");
-		return true;
 	}
 	return true;
 }
@@ -145,12 +158,10 @@ void PaintFrame::setGroup(MPoint s, MPoint e) {
 
 void PaintFrame::findShape(Group* g) {
 	for (j = unknown.begin(); j.hasNext(); j.toNext()) {
-		if (j.getContent() != nullptr) {
 			if (g->areyouin(j.getContent())) {
 				g->group(j.getContent());
 				j.getContent()->setGroup(g);
 			}
-		}
 	}
 }
 
@@ -161,4 +172,11 @@ Shape * PaintFrame::findShape(MPoint m) {
 		}
 	}
 	return nullptr;
+}
+
+void PaintFrame::moveShape(Shape * sh, MPoint s, MPoint e) {
+	sh->x1_ = sh->x1_ + (e.x_ - s.x_);
+	sh->y1_ = sh->y1_ + (e.y_ - s.y_);
+	sh->x2_ = sh->x2_ + (e.x_ - s.x_);
+	sh->y2_ = sh->y2_ + (e.y_ - s.y_);
 }
