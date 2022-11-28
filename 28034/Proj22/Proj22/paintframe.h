@@ -11,14 +11,13 @@ public:
 	void initialize() override;
 	void drawButtons();
 	void setCommand(int t);
-	void setGrid(bool c);
+	//void setGrid(bool c);
 	void setGroup(MPoint s, MPoint e);
 	void findShape(Group * g);
 	Shape* findShape(MPoint m);
 	void moveShape(Shape* sh, MPoint s, MPoint e);
 
-	bool toGrid = true;
-	int num = 0;
+	//bool toGrid = true;
 	int gnum = 0;
 	MyList<Group*> g_;
 };

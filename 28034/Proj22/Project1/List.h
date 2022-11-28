@@ -19,12 +19,14 @@ public:
 		p->next = 0;
 
 		if (root == 0) {
+			p->prev = root;
 			root = p;
 		}
 		else {
 			while (temp->next) {
 				temp = temp->next;
 			}
+			p->prev = temp;
 			temp->next = p;
 		}
 	}
@@ -33,6 +35,7 @@ public:
 		MyLink* p = new MyLink();
 		p->data = a;
 		p->next = 0;
+		p->prev = root;
 
 		MyLink* temp = root;
 
@@ -48,12 +51,15 @@ public:
 		}
 	}
 
-	void remove() {
+	void remove(T d) {
 		MyLink* p = root;
-		while (p->next->next != nullptr) {
-			p = p->next;
+		MyLink* temp;
+		while (root->data != d) {
+			root = root->next;
 		}
-		p->next = nullptr;
+		temp = root;
+		root = temp->next;
+		root = p;
 	}
 
 	class MyLink {
@@ -62,7 +68,6 @@ public:
 		MyLink* next;
 		MyLink* prev;
 		MyLink() :next(0) {
-
 		}
 	};
 
@@ -83,15 +88,41 @@ public:
 		T getContent() {
 			return ptr_->data;
 		}
-		MyLink* ptr_;
+
+		MyLink* ptr_ = 0;
 	};
 
 	class reverse_iterator {
+	public:
+		reverse_iterator() {
 
+		}
+		reverse_iterator(MyLink* p) {
+			rptr_ = p;
+		}
+		bool hasPrev() {
+			return rptr_ -> prev != nullptr;
+		}
+		void toPrev() {
+			rptr_ = rptr_->prev;
+		}
+		T getContent() {
+			return rptr_->data;
+		}
+
+		MyLink* rptr_ = 0;
 	};
 
 	iterator begin() {
 		return iterator(root);
+	}
+
+	reverse_iterator end() {
+		MyLink* temp = root;
+		while (temp->next != nullptr) {
+			temp = temp->next;
+		}
+		return reverse_iterator(temp);
 	}
 
 	T operator[](int num) {

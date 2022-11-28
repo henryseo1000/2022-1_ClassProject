@@ -6,6 +6,8 @@
 
 static MyList<Shape*> unknown;
 MyList<Shape*>::iterator j;
+MyList<Group*>::iterator l;
+MyList<Shape*>::reverse_iterator k;
 
 PaintFrame::PaintFrame() : Frame(L"", 800, 600){
 
@@ -50,6 +52,9 @@ bool PaintFrame::eventHandler(MEvent e)
 		end_ = e.getPoint();
 		if (findButton(end_) != nullptr) {
 			findButton(end_)->onClick(e);
+			if (figType_ == 4) {
+				gnum = 0;
+			}
 		}
 		if (figType_ == 0) {
 
@@ -63,7 +68,6 @@ bool PaintFrame::eventHandler(MEvent e)
 				Shape* R = new Rect(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
 				unknown.push_back(R);
 			}
-			num++;
 		}
 		else if (figType_ == 2) {
 			if (cmdType_ == 0) {
@@ -74,7 +78,6 @@ bool PaintFrame::eventHandler(MEvent e)
 				Shape* R = new Elli(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
 				unknown.push_back(R);
 			}
-			num++;
 		}
 		else if (figType_ == 3) {
 			if (cmdType_ == 0) {
@@ -85,7 +88,6 @@ bool PaintFrame::eventHandler(MEvent e)
 				Shape* R = new Line(hDC_, (start_.x_ + 10) / 20 * 20, (start_.y_ + 10) / 20 * 20, (end_.x_ + 10) / 20 * 20, (end_.y_ + 10) / 20 * 20);
 				unknown.push_back(R);
 			}
-			num++;
 		}
 		else if (figType_ == 4) {
 			if (gnum <= 1) {
@@ -95,7 +97,6 @@ bool PaintFrame::eventHandler(MEvent e)
 				gnum++;
 			}
 			else {
-				gnum = 0;
 				figType_ = 0;
 			}
 		}
@@ -147,9 +148,9 @@ void PaintFrame::setCommand(int t) {
 	cmdType_ = t;
 }
 
-void PaintFrame::setGrid(bool c) {
+/*void PaintFrame::setGrid(bool c) {
 	toGrid = c;
-}
+}*/
 
 void PaintFrame::setGroup(MPoint s, MPoint e) {
 	Group* g = new Group(s, e);
@@ -160,15 +161,16 @@ void PaintFrame::findShape(Group* g) {
 	for (j = unknown.begin(); j.hasNext(); j.toNext()) {
 			if (g->areyouin(j.getContent())) {
 				g->group(j.getContent());
+				unknown.remove(j.getContent());
 				j.getContent()->setGroup(g);
 			}
 	}
 }
 
 Shape * PaintFrame::findShape(MPoint m) {
-	for (j = unknown.begin(); j.hasNext(); j.toNext()) {
-		if (j.getContent() != nullptr && j.getContent()->includes(m)) {
-			return j.getContent();
+	for (k = unknown.end(); k.hasPrev(); k.toPrev()) {
+		if (k.getContent() != nullptr && k.getContent()->includes(m)) {
+			return k.getContent();
 		}
 	}
 	return nullptr;
