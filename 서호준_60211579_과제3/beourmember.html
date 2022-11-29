@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서호준/60211579/웹프로그래밍 과제#2</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+
+<body>
+    <h2>회원 가입 : 빈센트블루님 팬 가입</h2>
+    <h4>빈센트블루 팬 가입을 위한 페이지입니다! 아래 내용들을 모두 채워주세요!</h4>
+    <hr>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>기본 개인 정보</legend>
+            <label>아이디(10-20글자):
+                <input type="text" value="아이디" minlength="10" maxlength="20" required>
+            </label>
+            <label>비밀번호(10-20글자):
+                <input type="password" value="123456" minlength="10" maxlength="20" required>
+            </label>
+            <br>
+            <label>이메일(10-20글자):
+                <input type="email" value="00000@hanmail.com" minlength="10" maxlength="20" required>
+            </label>
+            <label>전화번호(10-20글자):
+                <input type="tel" value="000-0000-0000" minlength="10" maxlength="20" required>
+            </label>
+        </fieldset>
+        <hr>
+        <fieldset>
+            <legend>선택 정보</legend>
+            <label>나이를 입력하세요:
+                <input type="number" min="1" max="100">살
+            </label>
+
+            <br>
+            <label>당신의 생년월일은?:
+                <input type="date">
+            </label>
+            <br>
+            <label>당신을 가장 잘 표현할 수 있는 사진과 색을 넣어주세요! 나중에 팬미팅 이름표에 쓰입니다!
+                <p>사진:</p>
+                <input type="file">
+                <p>색깔:</p>
+                <input type="color">
+            </label>
+            <br>
+            <label for="city">거주하시는 지역을 선택해주세요
+                <select name="city" id="city">
+                    <option value="수지구">수지구</option>
+                    <option value="수원시 팔달구">수원시 팔달구</option>
+                    <option value="강북구">강북구</option>
+                    <option value="강남구">강남구</option>
+                    <option value="서초구">서초구</option>
+                    <option value="중원구">중원구</option>
+                    <option value="분당구">분당구</option>
+                </select>
+            </label>
+            <br>
+        </fieldset>
+        <fieldset>
+            <legend>기타 정보</legend>
+            <label for="desire">1. 빈센트블루님의 팬이 되어 꼭 하고 싶은 것은?
+                <br>
+                <textarea id="desire" name="하고 싶은 일을 적어주세요!"></textarea>
+            </label>
+            <br>
+            <label>2. 빈센트블루를 사랑하는 마음은 1-100 중 얼마나?
+                <input type="range" min="1" max="100" value="50">
+            </label>
+            <p>3. 빈센트블루님께 영원한 팬심을 맹세하십니까?</p>
+            <label><input type="radio" name="fan" value="byinternet">예</label>
+            <label><input type="radio" name="fan" value="byinternet">아니오</label>
+            <p>4. 자신이 빈센트블루의 히트 곡중 가장 좋아하는 곡을 선택해주세요.</p>
+            <label><input type="checkbox" name="thought" value="thumping">쿵쿵쿵</label>
+            <label><input type="checkbox" name="thought" value="rain">비가와</label>
+            <label><input type="checkbox" name="thought" value="rainbow">무지개는 있다</label>
+            <label><input type="checkbox" name="thought" value="J">J</label>
+        </fieldset>
+        <hr>
+        <label>도움이 필요하신가요?
+            <a href="./login.html" target="_blank"><input type="button" value="계정이 이미 있으신가요? 로그인하세요"></input></a>
+            <input type="submit" value="등록">
+            <input type="reset" value="폼 초기화">
+        </label>
+    </form>
+    <hr>
+</body>
+
+</html>
