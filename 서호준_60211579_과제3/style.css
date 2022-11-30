@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Sunflower:wght@500&display=swap');
+@media screen and (max-width : 700px){
+    body{
+        background-color : rgb(132, 187, 206);
+        text-align: center;
+    }
+}
+@keyframes bgchange{
+    0%{background-color:navy;}
+    25%{background-color:skyblue;}
+    50%{background-color:rgb(132, 187, 206);}
+    100%{background-color:royalblue;}
+  }
+
+*{
+    box-sizing : border-box;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+}
+
+tr td:nth-of-type(1){
+    font-weight: bolder;
+}
+
+h1, h2{
+    color : navy;
+    background-color : skyblue;
+    margin : 0px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+img{
+    width : 400px;
+    height : 400px;
+    box-sizing : border-box;
+    margin : 10px;
+    padding : 20px 10px;
+}
+
+h4{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size : 20px;
+}
+
+#website, #list, #TMI, #bottomMenu{
+    font-family : 'Black Han Sans', sans-serif;
+    font-size : 20px;
+    font-style : oblique;
+    text-align : center;
+}
+
+#menu, #please_survey > a{
+    font-family : 'Black Han Sans', sans-serif;
+    font-size : 20px;
+    font-style : oblique;
+}
+
+.about{
+    background-color : skyblue;
+    background-image : url(./빈센트블루/빈센트블루\ 사진_2.jpg);
+    background-position: center center;
+    background-repeat : no-repeat ;
+    background-size : 100% 50%;
+    background-attachment: fixed;
+    color : rgb(255, 255, 255);
+}
+
+#quiz > p{
+    font-family : 'Black Han Sans', sans-serif;
+    font-size : 20px;
+}
+
+ol li:nth-child(3){
+    font-weight : bold;
+    text-decoration: underline;
+}
+
+div#lyrics p:last-of-type{
+    font-family : 'Black Han Sans', sans-serif;
+    font-weight : bold;
+}
+
+div#lyrics p:nth-last-of-type(2), div#lyrics p:nth-last-of-type(4){
+    color : blue;
+    font-weight : bold;
+}
+
+legend{
+    font-weight : bold;
+    color : blue;
+}
+
+input[type= "submit"], input[type= "reset"],input[type= "button"]{
+    font-family: 'Do Hyeon', sans-serif;
+    box-shadow: 3px 3px blue;
+}
+
+.block, #album_1, #album_2, #album_3, #album_4, #album_5, #album_6, #album_7{
+    text-align: center;
+    font-family: 'Do Hyeon', sans-serif;
+    color : white;
+    width : 100px;
+    height : 100px;
+    display : inline-flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#album_1{
+    background-color: navy;
+    position : static;
+}
+
+#album_2{
+    background-color: blue;
+    position : static;
+}
+
+#album_3{
+    background-color: royalblue;
+    position : static;
+}
+
+#album_4{
+    background-color: rgb(132, 187, 206);
+    position : static;
+}
+
+#album_5{
+    background-color: skyblue;
+    position : static;
+}
+
+#album_6{
+    background-color: skyblue;
+    position : static;
+}
+
+#album_7{
+    background-color: lightblue;
+    animation-name: bgchange;
+    animation-duration:5s;
+    animation-delay : 1s;
+    animation-fill-mode: none;
+    animation-iteration-count : 5;
+    animation-direction:running;
+    position : static;
+}
+
+.block{
+    width:100px;
+    height:100px;
+  }
+  .blue-box{
+    background-color:blue;
+    position:relative;
+    float:right;
+  }
+  .sky-box{
+    background-color:skyblue;
+    position:relative;
+    float : right;
+  }
+
+a:link{
+    color : navy;
+}
+
+a:visited{
+    color : skyblue;
+}
+
+a:hover, a:active{
+    color : blue;
+}
+
+input:focus, input:checked{
+    color : navy;
+    font-weight : bold;
+}
+
+h1, h2 {
+    /* 클릭을 여러 번 했을 때
+    글자가 선택되는 것을 막기 위한 스타일 */
+    user-select: none;
+}
+    
+#output_select, #output_checkbox, #output_radio {
+    color :rgb(23, 23, 90);
+    font-weight : bold;
+}
